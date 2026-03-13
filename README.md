@@ -14,29 +14,37 @@ LLM (Google Gemini)
 ```
 Assistant: What is your age?
 User: 25
-Assistant: What is your nationality?
-User: India
-Assistant: What is your education level?
-User: Bachelor's Degree in Computer Science
 ```
 2. Retrieval-Augmented Generation (RAG): The chatbot retrieves relevant immigration policies from a vector database built from visa policy documents.
-### The Pipeline:
-```
-User -> QueryVector -> Search(FAISS) -> Relevant Policy Chunks -> LLM Reasoning -> Eligibility Decision
-```
-3. Metadata-Based Document Filtering: Documents are filtered using metadata (e.g., Country, Visa type) to improve retrieval accuracy.
-Example: USA + H1B $\rightarrow$ retrieves only H1B policies.
+3. Metadata-Based Document Filtering: Documents are filtered using metadata (e.g., Country, Visa type) to improve retrieval accuracy. 
 4. Live Web Search Integration: If the knowledge base lacks sufficient information, the system performs a real-time web search to retrieve the latest immigration updates, ensuring responses remain current.
-5. Concise vs. Detailed Response Modes
-### Components
+5. Concise vs. Detailed Response 
 Concise : Status, Short Explanation, Confidence Score
-Detailed: Status, Explanation, Policy References, Missing Info, Confidence Score
+Detailed: Status, Explanation, Policy References, Missing Info, Confidence Score(0-100)%
 6. Policy Source Transparency:
 Users can view the specific policy documents used to generate the answer, ensuring transparency and explainability.
 ## Project Architecture
 The flow of data through SwiftVisa:
 ```
-User $\rightarrow$ Streamlit Chat InterfaceSwiftVisa Agent $\rightarrow$ RAG Retriever (FAISS)Visa Policy Knowledge Base $\leftrightarrow$ Web Search (fallback)Gemini LLM $\rightarrow$ Eligibility Analysis
+User
+ ↓
+Streamlit Chat Interface (SwiftVisa Agent)
+ ↓
+User Profile Extraction
+ ↓
+RAG Retrieval System
+ ↓
+FAISS Vector Database
+ ↓
+Visa Policy Knowledge Base (PDF policies)
+ ↓
+Web Search (Fallback if context is insufficient)
+ ↓
+Gemini LLM
+ ↓
+Eligibility Analysis
+ ↓
+Structured Response to User
 ```
 ## Project Structure
 ```
@@ -89,4 +97,8 @@ source .venv/bin/activate
 4. Install dependencies
 ```bash
 pip install -r requirements.txt
+```
+5. Run
+```bash
+streamlit run app.py
 ```
