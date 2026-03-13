@@ -1,6 +1,5 @@
 # SwiftVisa: AI-Based Visa Eligibility Screening Chatbot
--> An intelligent AI-powered visa eligibility assistant built using Retrieval-Augmented Generation (RAG), designed to evaluate visa eligibility based on official immigration policy documents and real-time web information.
--> The system uses a conversational chatbot interface to collect user information and determine visa eligibility using grounded policy reasoning.
+SwiftVisa AI is an intelligent visa eligibility assistant that analyzes immigration policies and evaluates visa eligibility using RAG and LLM reasoning  based on official immigration policy documents and real-time web information. The system uses a conversational chatbot interface to collect user information and determine visa eligibility using grounded policy reasoning.
 ## Project Overview
 SwiftVisa is a Streamlit-based chatbot that helps users understand whether they may qualify for a specific visa category.
 ### Core Technologies:
